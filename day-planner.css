@@ -70,3 +70,16 @@ body {
     transition: all .3s ease-in-out;
   }
   
+  .pasthour{
+    background-color: red;
+  }
+
+  .currenthour{
+    background-color: grey;
+  }
+
+  .futurehour{
+    background-color: lightblue;
+  }
+  
+  
