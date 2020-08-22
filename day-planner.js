@@ -131,6 +131,7 @@ if (currentHour === 21) {
 var tempArray =[];
 
 $(".saveEl").on("click", function(){
+    preventDefault();
     var text = $(this).parent().siblings(".form-control").val();
     console.log(text);
     var time = $(this).parent().siblings(".form-control").attr("id");
