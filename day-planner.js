@@ -3,7 +3,7 @@
 var time = new Date();
 var currentHour = time.getHours();
 const currentDate = time.getMonth() + 1 + "/" + time.getDate() + "/" + time.getFullYear();
-const currentTime = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+const currentTime = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds(); 
 var nineAM = $("#nineAM");
 var tenAM = $("#tenAM")
 var elevAM = $("#elevAM")
@@ -17,9 +17,13 @@ var sixPM = $("#sixPM")
 var sevPM = $("#sevPM")
 var eightPM = $("#eightPM")
 var ninePM = $("#ninePM")
+var saveEl = $("#saveEl")
 // displays current date on webpage
 $("#currentDay").append(currentDate);
 $("#timeOfDay").append(currentTime);
+
+
+
 // sets color based on hour
 if (currentHour === 9) {
     nineAM.addClass("currenthour")
@@ -123,3 +127,27 @@ if (currentHour === 21) {
 } else if (currentHour < 21) {
     ninePM.addClass("futurehour");
 };
+
+var tempArray =[];
+
+$(".saveEl").on("click", function(){
+    var text = $(this).parent().siblings(".form-control").val();
+    console.log(text);
+    var time = $(this).parent().siblings(".form-control").attr("id");
+    console.log(time);
+    // $(this).parent().siblings(".form-control").text(text);
+    var saveText = {
+        appointText: text,
+        appointTime: time
+    }
+    
+     tempArray = JSON.parse(localStorage.getItem("savedText"));
+    if (tempArray === null) {
+        localStorage.setItem("savedText", JSON.stringify(saveText));
+    } else {
+        tempArray.push(saveText);
+        localStorage.setItem("savedText", JSON.stringify(tempArray));
+    }
+    
+   
+});
